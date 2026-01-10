@@ -16,40 +16,25 @@ export class PortfolioModal {
 
 	/**
 	 * Normalize portfolio URL for different environments
-	 * Handles both local dev (/public/portfolios/) and GitHub Pages (/portfolios/)
+	 * Ensures /public/ prefix for both local dev and GitHub Pages
 	 */
 	_normalizePortfolioUrl(url) {
 		if (!url) return url;
 
-		// Remove /public/ prefix if present (for GitHub Pages compatibility)
-		let normalizedUrl = url.replace(/^\/public\//, '/');
-
-		// Ensure URL starts with /
+		let normalizedUrl = url;
+		
+		// Remove /public/ first if it exists to normalize
+		normalizedUrl = normalizedUrl.replace(/^\/public\//, '/');
+		
+		// Ensure it starts with /
 		if (!normalizedUrl.startsWith('/')) {
 			normalizedUrl = '/' + normalizedUrl;
 		}
-
-		// Detect environment
-		const hostname = window.location.hostname;
-		const isGitHubPages = hostname.includes('.github.io');
-		const isLocalDev = hostname === 'localhost' ||
-		                   hostname === '127.0.0.1' ||
-		                   hostname === '' ||
-		                   hostname.startsWith('192.168.') ||
-		                   hostname.startsWith('10.0.');
-
-		// For GitHub Pages, use clean URLs without /public/
-		if (isGitHubPages) {
-			console.log(`GitHub Pages detected, using URL: ${normalizedUrl}`);
-			return normalizedUrl;
-		}
-
-		// For local dev, add /public/ back if needed
-		if (isLocalDev && !normalizedUrl.startsWith('/public/')) {
-			normalizedUrl = '/public' + normalizedUrl;
-			console.log(`Local dev detected, using URL: ${normalizedUrl}`);
-		}
-
+		
+		// Add /public/ prefix for both local and GitHub Pages
+		normalizedUrl = '/public' + normalizedUrl;
+		
+		console.log(`Using URL: ${normalizedUrl}`);
 		return normalizedUrl;
 	}
 
