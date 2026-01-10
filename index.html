@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Discover talented developers through their portfolio showcase">
+	<title>NOVA Portfolio Hub | Showcase Your Work</title>
+
+	<!-- Preconnect to external resources -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+	<!-- Tailwind CSS -->
+	<script src="https://cdn.tailwindcss.com"></script>
+
+	<!-- AOS (Animate On Scroll) -->
+	<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+	<!-- Custom Tailwind Config -->
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						primary: '#6366f1',
+						secondary: '#ec4899',
+						accent: '#8b5cf6',
+						'dark-bg': '#0f172a',
+						'dark-card': '#1e293b',
+					},
+					fontFamily: {
+						sans: ['Inter', 'sans-serif'],
+						heading: ['Space Grotesk', 'sans-serif'],
+					},
+					animation: {
+						'gradient': 'gradient 8s linear infinite',
+						'float': 'float 20s ease-in-out infinite',
+						'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+					},
+					keyframes: {
+						gradient: {
+							'0%, 100%': { backgroundPosition: '0% 50%' },
+							'50%': { backgroundPosition: '100% 50%' },
+						},
+						float: {
+							'0%, 100%': { transform: 'translate(0, 0)' },
+							'50%': { transform: 'translate(50px, 50px)' },
+						},
+					},
+				},
+			},
+		}
+	</script>
+
+	<!-- Custom Styles -->
+	<style>
+		/* Hide scrollbar but keep functionality */
+		::-webkit-scrollbar {
+			width: 8px;
+		}
+		::-webkit-scrollbar-track {
+			background: #1e293b;
+		}
+		::-webkit-scrollbar-thumb {
+			background: #6366f1;
+			border-radius: 4px;
+		}
+		::-webkit-scrollbar-thumb:hover {
+			background: #818cf8;
+		}
+
+		/* Gradient text */
+		.gradient-text {
+			background: linear-gradient(135deg, #6366f1, #ec4899);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		/* Animated gradient background */
+		.animated-gradient {
+			background: linear-gradient(-45deg, #6366f1, #8b5cf6, #ec4899, #f59e0b);
+			background-size: 400% 400%;
+			animation: gradient 15s ease infinite;
+		}
+
+		/* Glass morphism effect */
+		.glass {
+			background: rgba(30, 41, 59, 0.7);
+			backdrop-filter: blur(10px);
+			border: 1px solid rgba(255, 255, 255, 0.1);
+		}
+
+		/* Smooth hover transitions */
+		.hover-lift {
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+		}
+		.hover-lift:hover {
+			transform: translateY(-8px);
+		}
+	</style>
+</head>
+<body class="bg-dark-bg text-slate-100 font-sans overflow-x-hidden">
+	<!-- Navigation -->
+	<nav class="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300 w-[95%] max-w-7xl" id="navbar">
+		<div class="glass rounded-2xl shadow-2xl shadow-primary/10 px-6 lg:px-8">
+			<div class="flex items-center justify-between py-4">
+				<!-- Logo -->
+				<a href="/" class="flex items-center gap-2 text-2xl font-bold font-heading group">
+					<span class="text-white transition-transform group-hover:scale-110">NOVA</span>
+					<span class="gradient-text">HUB</span>
+				</a>
+
+				<!-- Desktop Navigation -->
+				<ul class="hidden lg:flex items-center gap-8">
+					<li><a href="#home" class="nav-link text-slate-300 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Home</a></li>
+					<li><a href="#portfolios" class="nav-link text-slate-300 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">Portfolios</a></li>
+					<li><a href="#about" class="nav-link text-slate-300 hover:text-primary transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all hover:after:w-full">About</a></li>
+					<li>
+						<a href="https://github.com/NOVA-RYZEX" target="_blank" class="flex items-center gap-2 px-4 py-2 rounded-lg border border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300">
+							<i class="fab fa-github"></i>
+							<span>GitHub</span>
+						</a>
+					</li>
+				</ul>
+
+				<!-- Mobile Menu Toggle -->
+				<button class="lg:hidden p-2 text-slate-300 hover:text-white transition-colors" id="mobileMenuToggle" aria-label="Toggle menu">
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path id="menuIcon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+						<path id="closeIcon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+					</svg>
+				</button>
+			</div>
+
+			<!-- Mobile Menu -->
+			<div class="hidden lg:hidden pb-4 px-2" id="mobileMenu">
+				<ul class="flex flex-col gap-4">
+					<li><a href="#home" class="block py-2 text-slate-300 hover:text-primary transition-colors mobile-nav-link">Home</a></li>
+					<li><a href="#portfolios" class="block py-2 text-slate-300 hover:text-primary transition-colors mobile-nav-link">Portfolios</a></li>
+					<li><a href="#about" class="block py-2 text-slate-300 hover:text-primary transition-colors mobile-nav-link">About</a></li>
+					<li>
+						<a href="https://github.com/NOVA-RYZEX" target="_blank" class="flex items-center gap-2 py-2 text-slate-300 hover:text-primary transition-colors">
+							<i class="fab fa-github"></i>
+							<span>GitHub</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Hero Section -->
+	<section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+		<!-- Animated Background -->
+		<div class="absolute inset-0 overflow-hidden">
+			<div class="absolute w-96 h-96 md:w-[500px] md:h-[500px] bg-primary rounded-full blur-3xl opacity-20 -top-20 -left-20 animate-float"></div>
+			<div class="absolute w-80 h-80 md:w-96 md:h-96 bg-secondary rounded-full blur-3xl opacity-20 -bottom-20 -right-20 animate-float" style="animation-delay: -5s;"></div>
+			<div class="absolute w-64 h-64 md:w-80 md:h-80 bg-accent rounded-full blur-3xl opacity-20 top-1/2 right-10 animate-float" style="animation-delay: -10s;"></div>
+		</div>
+
+		<!-- Hero Content -->
+		<div class="container mx-auto px-4 lg:px-8 relative z-10">
+			<div class="text-center max-w-4xl mx-auto">
+				<h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold font-heading mb-6" data-aos="fade-up">
+					Discover Amazing
+					<span class="gradient-text block mt-2">Portfolios</span>
+				</h1>
+				<p class="text-lg sm:text-xl md:text-2xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="100">
+					Explore the work of talented developers, designers, and creators in our collaborative showcase platform.
+				</p>
+
+				<!-- CTA Buttons -->
+				<div class="flex flex-col sm:flex-row gap-4 justify-center mb-16" data-aos="fade-up" data-aos-delay="200">
+					<a href="#portfolios" class="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-secondary rounded-lg text-white font-semibold shadow-lg shadow-primary/30 hover:shadow-xl hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300">
+						<span>Explore Portfolios</span>
+						<i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+					</a>
+					<a href="https://github.com/NOVA-RYZEX" target="_blank" class="inline-flex items-center justify-center gap-2 px-8 py-4 border-2 border-primary rounded-lg text-primary font-semibold hover:bg-primary hover:text-white transition-all duration-300">
+						<i class="fab fa-github"></i>
+						<span>Join Community</span>
+					</a>
+				</div>
+
+				<!-- Stats Counter -->
+				<div class="grid grid-cols-3 gap-4 sm:gap-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="300">
+					<div class="text-center p-4 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-slate-700/50">
+						<div class="text-3xl sm:text-4xl md:text-5xl font-bold text-primary font-heading mb-2">
+							<span data-count="0" class="stat-counter">0</span>
+						</div>
+						<div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Members</div>
+					</div>
+					<div class="text-center p-4 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-slate-700/50">
+						<div class="text-3xl sm:text-4xl md:text-5xl font-bold text-secondary font-heading mb-2">
+							<span data-count="0" class="stat-counter">0</span>
+						</div>
+						<div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Projects</div>
+					</div>
+					<div class="text-center p-4 rounded-lg bg-slate-800/30 backdrop-blur-sm border border-slate-700/50">
+						<div class="text-3xl sm:text-4xl md:text-5xl font-bold text-accent font-heading mb-2">
+							<span data-count="0" class="stat-counter">0</span>
+						</div>
+						<div class="text-xs sm:text-sm text-slate-400 uppercase tracking-wider">Skills</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Scroll Indicator -->
+		<div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-center animate-bounce">
+			<p class="text-sm text-slate-400 mb-2">Scroll to explore</p>
+			<i class="fas fa-chevron-down text-primary"></i>
+		</div>
+	</section>
+
+	<!-- Portfolios Section -->
+	<section id="portfolios" class="py-20 lg:py-32 bg-dark-bg">
+		<div class="container mx-auto px-4 lg:px-8">
+			<!-- Section Header -->
+			<div class="text-center mb-16" data-aos="fade-up">
+				<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-heading mb-4">
+					Featured <span class="gradient-text">Portfolios</span>
+				</h2>
+				<p class="text-lg sm:text-xl text-slate-400">Meet our talented community members</p>
+			</div>
+
+			<!-- Search & Filter Controls -->
+			<div class="mb-12 space-y-6" data-aos="fade-up" data-aos-delay="100">
+				<!-- Search Box -->
+				<div class="max-w-2xl mx-auto">
+					<div class="relative">
+						<i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+						<input
+							type="text"
+							id="searchInput"
+							placeholder="Search by name or skill..."
+							class="w-full pl-12 pr-4 py-4 bg-dark-card border border-slate-700 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300"
+						>
+					</div>
+				</div>
+
+				<!-- Skill Filter Tags -->
+				<div id="skillFilters" class="flex flex-wrap justify-center gap-3">
+					<!-- Dynamic skill tags will be inserted here -->
+				</div>
+			</div>
+
+			<!-- Portfolio Grid -->
+			<div id="portfolioGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+				<!-- Loading State -->
+				<div class="col-span-full flex flex-col items-center justify-center py-20">
+					<div class="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin mb-4"></div>
+					<p class="text-slate-400 text-lg">Loading portfolios...</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- About Section -->
+	<section id="about" class="py-20 lg:py-32 bg-gradient-to-b from-dark-bg to-dark-card">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="max-w-6xl mx-auto">
+				<!-- About Content -->
+				<div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
+					<h2 class="text-3xl sm:text-4xl md:text-5xl font-bold font-heading mb-6">
+						About <span class="gradient-text">NOVA Hub</span>
+					</h2>
+					<p class="text-lg sm:text-xl text-slate-400 mb-4 leading-relaxed">
+						NOVA Hub is a collaborative platform where talented individuals showcase their work,
+						share their expertise, and connect with the community. We believe in the power of
+						collaboration and continuous learning.
+					</p>
+					<p class="text-lg sm:text-xl text-slate-400 leading-relaxed">
+						Whether you're a developer, designer, or creator, NOVA Hub provides a space to
+						highlight your achievements and inspire others.
+					</p>
+				</div>
+
+				<!-- Features Grid -->
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+					<!-- Feature 1 -->
+					<div class="group p-8 bg-dark-card border border-slate-700 rounded-2xl hover:border-primary transition-all duration-300 hover-lift" data-aos="fade-up" data-aos-delay="100">
+						<div class="text-5xl text-primary mb-4 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-users"></i>
+						</div>
+						<h3 class="text-xl font-bold font-heading mb-3">Community Driven</h3>
+						<p class="text-slate-400">Built by developers, for developers</p>
+					</div>
+
+					<!-- Feature 2 -->
+					<div class="group p-8 bg-dark-card border border-slate-700 rounded-2xl hover:border-primary transition-all duration-300 hover-lift" data-aos="fade-up" data-aos-delay="200">
+						<div class="text-5xl text-secondary mb-4 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-code"></i>
+						</div>
+						<h3 class="text-xl font-bold font-heading mb-3">Open Source</h3>
+						<p class="text-slate-400">Contribute and grow together</p>
+					</div>
+
+					<!-- Feature 3 -->
+					<div class="group p-8 bg-dark-card border border-slate-700 rounded-2xl hover:border-primary transition-all duration-300 hover-lift" data-aos="fade-up" data-aos-delay="300">
+						<div class="text-5xl text-accent mb-4 group-hover:scale-110 transition-transform duration-300">
+							<i class="fas fa-rocket"></i>
+						</div>
+						<h3 class="text-xl font-bold font-heading mb-3">Modern Tech</h3>
+						<p class="text-slate-400">Built with latest web technologies</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Footer -->
+	<footer class="bg-dark-card border-t border-slate-700 py-12 lg:py-16">
+		<div class="container mx-auto px-4 lg:px-8">
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-8">
+				<!-- Brand -->
+				<div data-aos="fade-up">
+					<div class="flex items-center gap-2 text-2xl font-bold font-heading mb-4">
+						<span class="text-white">NOVA</span>
+						<span class="gradient-text">HUB</span>
+					</div>
+					<p class="text-slate-400">Showcasing talent, inspiring innovation</p>
+				</div>
+
+				<!-- Platform Links -->
+				<div data-aos="fade-up" data-aos-delay="100">
+					<h4 class="text-lg font-bold font-heading mb-4">Platform</h4>
+					<ul class="space-y-2">
+						<li><a href="#portfolios" class="text-slate-400 hover:text-primary transition-colors duration-200">Browse Portfolios</a></li>
+						<li><a href="#about" class="text-slate-400 hover:text-primary transition-colors duration-200">About Us</a></li>
+						<li><a href="https://github.com/NOVA-RYZEX" class="text-slate-400 hover:text-primary transition-colors duration-200">Contribute</a></li>
+					</ul>
+				</div>
+
+				<!-- Community Links -->
+				<div data-aos="fade-up" data-aos-delay="200">
+					<h4 class="text-lg font-bold font-heading mb-4">Community</h4>
+					<ul class="space-y-2">
+						<li><a href="https://github.com/NOVA-RYZEX" target="_blank" class="text-slate-400 hover:text-primary transition-colors duration-200">GitHub</a></li>
+						<li><a href="https://linkedin.com/company/nova-ryzex" target="_blank" class="text-slate-400 hover:text-primary transition-colors duration-200">LinkedIn</a></li>
+						<li><a href="#" class="text-slate-400 hover:text-primary transition-colors duration-200">Discord</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Footer Bottom -->
+			<div class="pt-8 border-t border-slate-700 text-center text-slate-400 text-sm" data-aos="fade-up">
+				<p>&copy; 2026 NOVA-RYZEX. Built with ❤️ by the community</p>
+			</div>
+		</div>
+	</footer>
+
+	<!-- AOS Library -->
+	<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+	<!-- Initialize AOS -->
+	<script>
+		// Initialize AOS
+		AOS.init({
+			duration: 800,
+			easing: 'ease-out-cubic',
+			once: true,
+			offset: 50,
+		});
+
+		// Mobile Menu Toggle
+		const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+		const mobileMenu = document.getElementById('mobileMenu');
+		const menuIcon = document.getElementById('menuIcon');
+		const closeIcon = document.getElementById('closeIcon');
+
+		if (mobileMenuToggle && mobileMenu) {
+			mobileMenuToggle.addEventListener('click', () => {
+				mobileMenu.classList.toggle('hidden');
+				menuIcon.classList.toggle('hidden');
+				closeIcon.classList.toggle('hidden');
+			});
+
+			// Close mobile menu when clicking on a link
+			const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+			mobileNavLinks.forEach(link => {
+				link.addEventListener('click', () => {
+					mobileMenu.classList.add('hidden');
+					menuIcon.classList.remove('hidden');
+					closeIcon.classList.add('hidden');
+				});
+			});
+		}
+
+		// Navbar scroll effect
+		const navbar = document.getElementById('navbar');
+		let lastScroll = 0;
+
+		window.addEventListener('scroll', () => {
+			const currentScroll = window.pageYOffset;
+
+			if (currentScroll > 50) {
+				navbar.classList.add('shadow-lg', 'shadow-slate-900/50');
+			} else {
+				navbar.classList.remove('shadow-lg', 'shadow-slate-900/50');
+			}
+
+			lastScroll = currentScroll;
+		});
+	</script>
+
+	<!-- Main Application Script -->
+	<script type="module" src="src/main.js"></script>
+</body>
+</html>

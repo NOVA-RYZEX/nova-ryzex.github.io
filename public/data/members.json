@@ -1,0 +1,40 @@
+[
+	{
+		"name": "Gideon Yebei",
+		"avatar": "https://avatars.githubusercontent.com/u/145453820?s=400&u=8f8cbb76b0f5251ccf967b7a43ee752e55601859&v=4",
+		"role": "Software Developer",
+		"portfolio": "/portfolios/Gideon-Yebei/",
+		"bio": "Passionate software developer creating elegant solutions to complex problems. Building modern web applications with clean code and exceptional user experiences.",
+		"skills": [
+			"JavaScript",
+			"React",
+			"Node.js",
+			"Python",
+			"Tailwind CSS"
+		],
+		"social_links": {
+			"github": "https://github.com/Gideon-Yebei",
+			"linkedin": "https://linkedin.com/in/gideon-yebei",
+			"twitter": "https://twitter.com/gideonyebei"
+		}
+	},
+	{
+		"name": "0x00webs",
+		"avatar": "https://avatars.githubusercontent.com/u/145453820?s=400&u=8f8cbb76b0f5251ccf967b7a43ee752e55601859&v=4",
+		"role": "Software Developer",
+		"portfolio": "/portfolios/0x00webs/",
+		"bio": "Passionate software developer creating elegant solutions to complex problems. Building modern web applications with clean code and exceptional user experiences.",
+		"skills": [
+			"JavaScript",
+			"React",
+			"Node.js",
+			"Python",
+			"Tailwind CSS"
+		],
+		"social_links": {
+			"github": "https://github.com/0x00webs",
+			"linkedin": "https://linkedin.com/in/0x00webs",
+			"twitter": "https://twitter.com/0x00webs"
+		}
+	}
+]

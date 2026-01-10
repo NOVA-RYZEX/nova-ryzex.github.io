@@ -1,0 +1,29 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary
+*.tmp
+.temp/
+
+# Backup folder
+backup/
+
+docs/
+
+# Build output
+dist/
+build/
+
+# Node modules
+node_modules/
+.github/copilot-instructions.md
