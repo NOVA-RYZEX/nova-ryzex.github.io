@@ -85,11 +85,13 @@ export class PortfolioGrid {
 
 				<!-- Card Footer -->
 				<div class="flex items-center justify-between pt-4 mt-4 border-t border-slate-700">
-				<button data-portfolio-url="${member.portfolio || '#'}" data-member-name="${member.name || 'Anonymous'}"
-				   class="portfolio-view-btn group/link flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200 cursor-pointer">
-					<span>View Portfolio</span>
-					<i class="fas fa-arrow-right text-sm"></i>
-				</button>
+					<button
+						data-portfolio-url="${member.portfolio || '#'}"
+						data-member-name="${member.name || 'Anonymous'}"
+						class="portfolio-view-btn group/link flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200 cursor-pointer">
+						<span>View Portfolio</span>
+						<i class="fas fa-arrow-right text-sm"></i>
+					</button>
 					<div class="flex items-center gap-2">
 						${this._renderSocialLinks(socialLinks)}
 					</div>
